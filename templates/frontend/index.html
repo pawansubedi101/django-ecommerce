@@ -1,0 +1,53 @@
+{% extends "frontend/layout/main.html" %}
+
+{% block title %}Home - My Site{% endblock %}
+
+{% block content %}
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://img.freepik.com/free-photo/photocomposition-horizontal-online-shopping-banner_23-2151201779.jpg?t=st=1708932255~exp=1708935855~hmac=0137f214bef8da42f58e7c12323c31219b1558c6910bf466874a9c0480310998&w=826" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://img.freepik.com/free-vector/flat-11-11-shopping-day-sale-banner-template_23-2149724057.jpg?t=st=1708932893~exp=1708936493~hmac=fdfa83b1adc85fe8b3aeff860eaefdadecb2b96795507105acad10f1545adc44&w=826" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://img.freepik.com/free-vector/online-shopping-banner-template_23-2148764706.jpg?t=st=1708932683~exp=1708936283~hmac=e9131be7621241b1dc30962d14a0b84e215c247aa54aec56edb552b9b3600989&w=740" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container my-4">
+    <h4>Products</h4>
+    <div class="row mt-3  g-3">
+      {% for product in products%}
+      
+        <div class="col-lg-3">
+            <div class="card">
+                {% if product.image%}
+                <img src="{{product.image.url}}" alt='{{product.image}}'>
+                {% else %}
+                <img src="https://www.pngkey.com/png/full/233-2332677_ega-png.png" alt='https://www.pngkey.com/png/full/233-2332677_ega-png.png'>
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text"><strong>Price : </strong>NPR {{product.price}}</p>
+                    <a href="/product/{{product.id}}" class="btn btn-primary">View Product</a>
+                </div>
+            </div>
+        </div>
+   {% endfor %}
+    </div>
+</div>
+{% endblock %}
